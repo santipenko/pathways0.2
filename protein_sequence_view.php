@@ -14,17 +14,17 @@ if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$query = "SELECT * FROM `protein_links` WHERE protein_a = ? OR protein_b = ?;";
+$query = "SELECT * FROM `protein_sequence` WHERE protein_id = ?;";
 $stmt = $con->prepare($query);
-$stmt->bind_param("ss", $gene, $gene);
+$stmt->bind_param("s", $gene);
 $stmt->execute();
-$stmt->bind_result($protein_a, $protein_b, $neighborhood, $fusion, $cooccurence, $coexpression, $experimental, $database_results, $textmining, $combined_score);
+$stmt->bind_result($protein_id, $sequence);
 ?>
 
 <?php require_once("includes/header.php"); ?>
-  <title>Degrees of Gene Separation - View Protein Links</title>
+  <title>Degrees of Gene Separation - View Protein Sequence</title>
 <?php require_once("includes/menu.php"); ?>
-    <h1>View Protein Links</h1>
+    <h1>View Protein Sequence</h1>
 	<form action="protein_links_view.php" method="get" role="form">
       <div class="form-group">
         <label for="gene">Gene: </label>
@@ -36,32 +36,16 @@ $stmt->bind_result($protein_a, $protein_b, $neighborhood, $fusion, $cooccurence,
 	</form>
     <table class="table table-striped">
       <tr>
-        <th>Protein A</th>
-        <th>Protein B</th>
-        <th>Neighborhood</th>
-        <th>Fusion</th>
-		<th>Cooccurence</th>
-		<th>Coexpression</th>
-		<th>Experimental</th>
-		<th>Database Results</th>
-		<th>Textmining</th>
-		<th>Combined Score</th>
+        <th>Protein ID</th>
+        <th>Sequence</th>
       </tr>
 <?php
 while($stmt->fetch())
 {
 	echo "
       <tr>
-        <td>$protein_a</td>
-        <td>$protein_b</td>
-        <td>$neighborhood</td>
-        <td>$fusion</td>
-		<td>$cooccurence</td>
-		<td>$coexpression</td>
-		<td>$experimental</td>
-		<td>$database_results</td>
-		<td>$textmining</td>
-		<td>$combined_score</td>
+        <td>$protein_id</td>
+        <td>$sequence</td>
       </tr>
 	";
 }

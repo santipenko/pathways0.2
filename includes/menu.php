@@ -1,13 +1,13 @@
     <!-- Bootstrap Files -->
-	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
 	
 	<!-- Custom CSS Files -->
 	<link href="bootstrap/css/ooga.css" rel="stylesheet" />
 	
 	<!-- Le Javascript -->
-	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js">
 	</script>
-	<script type="text/javascript" src="bootstrap/js/jquery.min.js">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">
 	</script>
   </head>
   <body>
@@ -27,8 +27,10 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="roster_add.php">Add a Student to the Roster</a></li>
-            <li><a href="roster_view.php">View Roster</a></li>
+            <li class="active"><a href="protein_alias_view.php">View Protein Alias</a></li>
+            <li><a href="protein_links_view.php">View Protein Links</a></li>
+			<li><a href="protein_actions_view.php">View Protein Actions</a></li>
+			<li><a href="protein_sequence_view.php">View Protein Sequence</a></li>
           <!--  <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">

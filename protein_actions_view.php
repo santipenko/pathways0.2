@@ -14,17 +14,17 @@ if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$query = "SELECT * FROM `protein_links` WHERE protein_a = ? OR protein_b = ?;";
+$query = "SELECT * FROM `protein_actions` WHERE protein_a = ? OR protein_b = ?;";
 $stmt = $con->prepare($query);
 $stmt->bind_param("ss", $gene, $gene);
 $stmt->execute();
-$stmt->bind_result($protein_a, $protein_b, $neighborhood, $fusion, $cooccurence, $coexpression, $experimental, $database_results, $textmining, $combined_score);
+$stmt->bind_result($protein_a, $protein_b, $mode, $action, $a_is_acting, $score, $sources, $transferred_sources);
 ?>
 
 <?php require_once("includes/header.php"); ?>
-  <title>Degrees of Gene Separation - View Protein Links</title>
+  <title>Degrees of Gene Separation - View Protein Actions</title>
 <?php require_once("includes/menu.php"); ?>
-    <h1>View Protein Links</h1>
+    <h1>View Protein Actions</h1>
 	<form action="protein_links_view.php" method="get" role="form">
       <div class="form-group">
         <label for="gene">Gene: </label>
@@ -38,30 +38,27 @@ $stmt->bind_result($protein_a, $protein_b, $neighborhood, $fusion, $cooccurence,
       <tr>
         <th>Protein A</th>
         <th>Protein B</th>
-        <th>Neighborhood</th>
-        <th>Fusion</th>
-		<th>Cooccurence</th>
-		<th>Coexpression</th>
-		<th>Experimental</th>
-		<th>Database Results</th>
-		<th>Textmining</th>
-		<th>Combined Score</th>
+        <th>Mode</th>
+        <th>Action</th>
+		<th>A is Acting</th>
+		<th>Score</th>
+		<th>Sources</th>
+		<th>Transferred Sources</th>
       </tr>
 <?php
 while($stmt->fetch())
 {
+	
 	echo "
       <tr>
         <td>$protein_a</td>
         <td>$protein_b</td>
-        <td>$neighborhood</td>
-        <td>$fusion</td>
-		<td>$cooccurence</td>
-		<td>$coexpression</td>
-		<td>$experimental</td>
-		<td>$database_results</td>
-		<td>$textmining</td>
-		<td>$combined_score</td>
+        <td>$mode</td>
+        <td>$action</td>
+		<td>$a_is_acting</td>
+		<td>$score</td>
+		<td>$sources</td>
+		<td>$transferred_sources</td>
       </tr>
 	";
 }
