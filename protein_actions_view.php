@@ -14,9 +14,9 @@ if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$query = "SELECT * FROM `protein_actions` WHERE protein_a = ? OR protein_b = ?;";
+$query = "SELECT * FROM `protein_actions` WHERE protein_a = ?;";
 $stmt = $con->prepare($query);
-$stmt->bind_param("ss", $gene, $gene);
+$stmt->bind_param("s", $gene);
 $stmt->execute();
 $stmt->bind_result($protein_a, $protein_b, $mode, $action, $a_is_acting, $score, $sources, $transferred_sources);
 ?>
@@ -25,7 +25,7 @@ $stmt->bind_result($protein_a, $protein_b, $mode, $action, $a_is_acting, $score,
   <title>Degrees of Gene Separation - View Protein Actions</title>
 <?php require_once("includes/menu.php"); ?>
     <h1>View Protein Actions</h1>
-	<form action="protein_links_view.php" method="get" role="form">
+	<form action="protein_actions_view.php" method="get" role="form">
       <div class="form-group">
         <label for="gene">Gene: </label>
         <input id="gene" class="form-control" type="text" name="gene" />

@@ -14,9 +14,9 @@ if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$query = "SELECT * FROM `protein_links` WHERE protein_a = ? OR protein_b = ?;";
+$query = "SELECT * FROM `protein_links` WHERE protein_a = ?;";
 $stmt = $con->prepare($query);
-$stmt->bind_param("ss", $gene, $gene);
+$stmt->bind_param("ss", $gene);
 $stmt->execute();
 $stmt->bind_result($protein_a, $protein_b, $neighborhood, $fusion, $cooccurence, $coexpression, $experimental, $database_results, $textmining, $combined_score);
 ?>

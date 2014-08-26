@@ -25,7 +25,7 @@ $stmt->bind_result($protein_id, $sequence);
   <title>Degrees of Gene Separation - View Protein Sequence</title>
 <?php require_once("includes/menu.php"); ?>
     <h1>View Protein Sequence</h1>
-	<form action="protein_links_view.php" method="get" role="form">
+	<form action="protein_sequence_view.php" method="get" role="form">
       <div class="form-group">
         <label for="gene">Gene: </label>
         <input id="gene" class="form-control" type="text" name="gene" />
