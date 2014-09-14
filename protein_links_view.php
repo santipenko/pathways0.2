@@ -16,7 +16,7 @@ if (mysqli_connect_errno()) {
 
 $query = "SELECT * FROM `protein_links` WHERE protein_a = ?;";
 $stmt = $con->prepare($query);
-$stmt->bind_param("ss", $gene);
+$stmt->bind_param("s", $gene);
 $stmt->execute();
 $stmt->bind_result($protein_a, $protein_b, $neighborhood, $fusion, $cooccurence, $coexpression, $experimental, $database_results, $textmining, $combined_score);
 ?>
